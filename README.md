@@ -80,7 +80,9 @@ $M_1$ is diode-connected, so its current establishes a $V_{SG1}$. $M_2$ receives
 
 1. **Differential Voltage Gain ($A_d$):**
    * $A_d = g_{m3,4} \cdot (r_{o2} \parallel r_{o4})$
+   
    * $g_{m3,4} = \sqrt{2 \mu_n C_{ox} (W/L)_{3,4} I_{D3}} \approx 1.11\text{ mS}$
+     
    * $r_{o2} = r_{o4} = \frac{1}{\lambda I_D} = \frac{1}{0.02 \times 55.67\mu\text{A}} \approx 898\text{ k}\Omega \implies R_{out} \approx 449\text{ k}\Omega$
    * **Theoretical Gain:** $A_d \approx 1.11\text{ mS} \times 449\text{ k}\Omega = \mathbf{498\text{ V/V}}\ \mathbf{(53.9\text{ dB})}$
 
@@ -112,8 +114,8 @@ The table below compares first-order analytical predictions with LTspice simulat
 
 | Performance Metric | Theoretical Formula | Analytical Calculation | LTspice Measurement (`.meas`) | Error / Deviation |
 | :--- | :--- | :---: | :---: | :---: |
-| **Tail Bias Current ($I_{SS}$)** | $I_{D5} = \frac{1}{2} \mu_n C_{ox} (W/L)_5 (V_{bias}-V_{TH})^2$ | $100.00\ \mu\text{A}$ | **$111.33\ \mu\text{A}$** | $+11.3\%$ |
-| **Branch Currents ($I_{D1-4}$)** | $I_{SS} / 2$ | $50.00\ \mu\text{A}$ | **$55.67\ \mu\text{A}$** | $+11.3\%$ |
+| **Tail Bias Current ($I_{SS}$)** | $I_{D5} = \frac{1}{2}\mu_n C_{ox}\left(\frac{W}{L}\right)_5(V_{bias}-V_{TH})^2$ | $111.11\ \mu\text{A}$ | **$111.33\ \mu\text{A}$** | $+0.2\%$ |
+| **Branch Currents ($I_{D1-4}$)** | $I_{SS} / 2$ | $55.66.00\ \mu\text{A}$ | **$55.67\ \mu\text{A}$** | $+0.2\%$ |
 | **Peak Gain ($A_{d0}$)** | $g_{m3,4} \cdot (r_{o2} \parallel r_{o4})$ | $53.90\text{ dB}$ ($498\text{ V/V}$) | **$54.19\text{ dB}$ ($512.3\text{ V/V}$)** | **$+0.29\text{ dB}$** ($+2.8\%$) |
 | **$-3\text{dB}$ Bandwidth ($f_{-3\text{dB}}$)** | $\frac{1}{2\pi (r_{o2} \parallel r_{o4}) C_L}$ | $3.54\text{ MHz}$ | **$3.48\text{ MHz}$** | $-1.6\%$ |
 | **Gain-Bandwidth Product (GBW)** | $\frac{g_{m3,4}}{2\pi C_L}$ | $1.77\text{ GHz}$ ($C_L = 0.1\text{ pF}$) | **$1.78\text{ GHz}$** | $+0.5\%$ |
