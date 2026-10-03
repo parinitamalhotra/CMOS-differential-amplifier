@@ -13,7 +13,10 @@ The baseline design uses a symmetric NMOS differential pair ($M_1, M_2$) biased 
 * **Tail Current ($I_1$):** $100\ \mu\text{A}$ ($I_{D1} = I_{D2} = 50\ \mu\text{A}$)
 * **Load Resistors ($R_1, R_2$):** $10\text{ k}\Omega$
 * **Transistor Sizing ($M_1, M_2$):** $W/L = 10\mu\text{m} / 1\mu\text{m}$
-
+<div align="center">
+<img width="1573" height="861" alt="image" src="https://github.com/user-attachments/assets/b53101ba-f8bc-4f15-ba41-d4eba2625b18" />
+<p><b>Figure 1:</b> Circuit diagram</p>
+</div>
 ### B. Theoretical Analysis
 For a differential input $v_{id} = v_{in1} - v_{in2}$, the differential transconductance gain is given by:
 
@@ -29,7 +32,10 @@ Given $\mu_n C_{ox} = 200\ \mu\text{A/V}^2$, $W/L = 10$, and $I_D = 50\ \mu\text
    * Both transistors remain firmly in the active saturation region ($V_{DS} > V_{GS} - V_{TH}$).
 2. **Current-Steering Large-Signal DC Sweep (`.dc`):**
    * Sweeping $V_{in1}$ around $V_{ICM} = 0.924\text{ V}$ demonstrates classic current steering: as $V_{in1}$ rises, $I_1$ is steered completely into $M_1$ ($I_D \rightarrow 100\ \mu\text{A}$), turning $M_2$ off ($I_D \rightarrow 0\ \mu\text{A}$).
-
+<div align="center">
+<img width="1600" height="226" alt="image" src="https://github.com/user-attachments/assets/0d79540d-2d55-4595-8485-e69f79a5c82c" />
+<p><b>Figure 4:</b> Differential sweep results</p>
+</div>
 ---
 
 ## 2. So, Why Active Current-Mirror Load?
@@ -57,7 +63,10 @@ The primary active-loaded topology consists of an NMOS input pair ($M_3, M_4$), 
 * **Active Mirror Load ($M_1, M_2$):** PMOS, $W/L = 20\mu\text{m} / 0.18\mu\text{m}$ (4-terminal `pmos4` with bulk tied to $V_{DD}$)
 * **Tail Current Bias ($M_5$):** NMOS, $W/L = 20\mu\text{m} / 0.18\mu\text{m}$ ($V_{bias} = 0.8\text{ V}$)
 * **Load Capacitance ($C_L$):** $0.1\text{ pF}$
-
+<div align="center">
+<img width="1600" height="931" alt="image" src="https://github.com/user-attachments/assets/03f8fc2f-7217-4f60-b924-fbb0e30d1c11" />
+<p><b>Figure 3:</b> Circuit diagram</p>
+</div>
 ### B. Theoretical Small-Signal & High-Frequency Derivations
 1. **Differential Voltage Gain ($A_d$):**
    $$A_d = g_{m3,4} \cdot (r_{o2} \parallel r_{o4})$$
@@ -79,6 +88,10 @@ The primary active-loaded topology consists of an NMOS input pair ($M_3, M_4$), 
    .meas AC max_gain MAX mag(V(vout))
    .meas AC bw TRIG mag(V(vout))=max_gain/sqrt(2) FALL=1
    .meas AC gbw TRIG mag(V(vout))=1 FALL=1
+<div align="center">
+<img width="1600" height="801" alt="image" src="https://github.com/user-attachments/assets/6db055e5-94ba-4853-85ae-91187bb3f596" />
+<p><b>Figure 4:</b> AC frequency response</p>
+</div>
 
 ## 5. Benchmark Table
 The benchmark table below illustrates the quantitative performance jump between passive resistive loading and active current-mirror loading:
