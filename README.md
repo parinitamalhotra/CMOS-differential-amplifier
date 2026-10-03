@@ -68,26 +68,26 @@ The primary active-loaded topology consists of an NMOS input pair ($M_3, M_4$), 
 </div>
 
 ### B. Theoretical Small-Signal & High-Frequency Derivations
-At \(V_{in1}=V_{in2}\),
-\[
-I_{M3}=I_{M4}\approx\frac{I_{tail}}2
-\]
-M1 is diode-connected, so its current establishes a \(V_{SG}\).
-M2 receives the same gate-source voltage, so it mirrors approximately the M1 current.
-At the output node:
-- M4 pulls current downward.
-- M2 supplies current upward.
-- The small-signal changes in these currents add at the output.
-That's why the differential current is converted into a single-ended output.
+
+At $V_{in1} = V_{in2}$:
+
+$$I_{M3} = I_{M4} \approx \frac{I_{tail}}{2}$$
+
+$M_1$ is diode-connected, so its current establishes a $V_{SG1}$. $M_2$ receives the same gate-source voltage, mirroring the $M_1$ current. At the output node:
+- $M_4$ pulls current downward.
+- $M_2$ supplies current upward.
+- The small-signal changes in these currents add constructively at the output node.
 
 1. **Differential Voltage Gain ($A_d$):**
-   * $$A_d = g_{m3,4} \cdot (r_{o2} \parallel r_{o4})$$ 
-   * $g_{m3,4} = \sqrt{2 \mu_n C_{ox} (W/L)_{3,4} I_{D3}} \approx 1.11\text{ mS}$ 
+   * $A_d = g_{m3,4} \cdot (r_{o2} \parallel r_{o4})$
+   * $g_{m3,4} = \sqrt{2 \mu_n C_{ox} (W/L)_{3,4} I_{D3}} \approx 1.11\text{ mS}$
    * $r_{o2} = r_{o4} = \frac{1}{\lambda I_D} = \frac{1}{0.02 \times 55.67\mu\text{A}} \approx 898\text{ k}\Omega \implies R_{out} \approx 449\text{ k}\Omega$
-   * **Theoretical Gain:** $A_d \approx 1.11\text{ mS} \times 449\text{ k}\Omega = \mathbf{498\text{ V/V}}\ \mathbf{(53.9\text{ dB})}$ 
+   * **Theoretical Gain:** $A_d \approx 1.11\text{ mS} \times 449\text{ k}\Omega = \mathbf{498\text{ V/V}}\ \mathbf{(53.9\text{ dB})}$
 
 2. **Bandwidth ($f_{-3\text{dB}}$) & Gain-Bandwidth Product (GBW):**
+
    $$f_{-3\text{dB}} = \frac{1}{2\pi R_{out} C_L} \approx \frac{1}{2\pi (449\text{ k}\Omega) (0.1\text{ pF})} \approx \mathbf{3.54\text{ MHz}}$$
+
    $$\text{GBW} = A_d \times f_{-3\text{dB}} = \frac{g_{m3,4}}{2\pi C_L} \approx \mathbf{1.77\text{ GHz}}$$
 
 ### C. Simulation Directives & Verification
@@ -111,12 +111,12 @@ That's why the differential current is converted into a single-ended output.
 The table below compares first-order analytical predictions with LTspice simulation results for the CMOS differential amplifier with an active current-mirror load:
 
 | Performance Metric | Theoretical Formula | Analytical Calculation | LTspice Measurement (`.meas`) | Error / Deviation |
-|---|---|---:|---:|---:|
-| **Tail Bias Current \(I_{SS}\)** | \(I_{SS}=\frac{1}{2}\mu_n C_{ox}\frac{W}{L}(V_{bias}-V_{TH})^2\) | **111.11 µA** | **111.33 µA** | **+0.2%** |
-| **Branch Currents \(I_{D1-4}\)** | \(I_{SS}/2\) | **55.56 µA** | **55.67 µA** | **+0.2%** |
-| **Peak Gain \(A_{d0}\)** | \(g_{m3,4}(r_{o2}\parallel r_{o4})\) | **53.90 dB (498 V/V)** | **54.19 dB (512.3 V/V)** | **+0.29 dB (+2.8%)** |
-| **−3 dB Bandwidth \(f_{-3dB}\)** | \(\frac{1}{2\pi(r_{o2}\parallel r_{o4})C_L}\) | **3.54 MHz** | **3.48 MHz** | **−1.6%** |
-| **Gain-Bandwidth Product (GBW)** | \(\frac{g_{m3,4}}{2\pi C_L}\) | **1.77 GHz** \(\left(C_L=0.1\,\text{pF}\right)\) | **1.78 GHz** | **+0.5%** |
+| :--- | :--- | :---: | :---: | :---: |
+| **Tail Bias Current ($I_{SS}$)** | $I_{D5} = \frac{1}{2} \mu_n C_{ox} (W/L)_5 (V_{bias}-V_{TH})^2$ | $100.00\ \mu\text{A}$ | **$111.33\ \mu\text{A}$** | $+11.3\%$ |
+| **Branch Currents ($I_{D1-4}$)** | $I_{SS} / 2$ | $50.00\ \mu\text{A}$ | **$55.67\ \mu\text{A}$** | $+11.3\%$ |
+| **Peak Gain ($A_{d0}$)** | $g_{m3,4} \cdot (r_{o2} \parallel r_{o4})$ | $53.90\text{ dB}$ ($498\text{ V/V}$) | **$54.19\text{ dB}$ ($512.3\text{ V/V}$)** | **$+0.29\text{ dB}$** ($+2.8\%$) |
+| **$-3\text{dB}$ Bandwidth ($f_{-3\text{dB}}$)** | $\frac{1}{2\pi (r_{o2} \parallel r_{o4}) C_L}$ | $3.54\text{ MHz}$ | **$3.48\text{ MHz}$** | $-1.6\%$ |
+| **Gain-Bandwidth Product (GBW)** | $\frac{g_{m3,4}}{2\pi C_L}$ | $1.77\text{ GHz}$ ($C_L = 0.1\text{ pF}$) | **$1.78\text{ GHz}$** | $+0.5\%$ |
 
 ## 5. How to run these simulations
 Follow these steps to replicate the simulation results in LTspice:
