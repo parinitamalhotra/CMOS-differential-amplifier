@@ -17,6 +17,7 @@ The baseline design uses a symmetric NMOS differential pair ($M_1, M_2$) biased 
 <img width="1573" height="861" alt="image" src="https://github.com/user-attachments/assets/b53101ba-f8bc-4f15-ba41-d4eba2625b18" />
 <p><b>Figure 1:</b> Circuit diagram</p>
 </div>
+
 ### B. Theoretical Analysis
 For a differential input $v_{id} = v_{in1} - v_{in2}$, the differential transconductance gain is given by:
 
@@ -67,6 +68,7 @@ The primary active-loaded topology consists of an NMOS input pair ($M_3, M_4$), 
 <img width="1600" height="931" alt="image" src="https://github.com/user-attachments/assets/03f8fc2f-7217-4f60-b924-fbb0e30d1c11" />
 <p><b>Figure 3:</b> Circuit diagram</p>
 </div>
+
 ### B. Theoretical Small-Signal & High-Frequency Derivations
 1. **Differential Voltage Gain ($A_d$):**
    $$A_d = g_{m3,4} \cdot (r_{o2} \parallel r_{o4})$$
@@ -95,7 +97,15 @@ The primary active-loaded topology consists of an NMOS input pair ($M_3, M_4$), 
 
 ## 5. Benchmark Table
 The benchmark table below illustrates the quantitative performance jump between passive resistive loading and active current-mirror loading:
-
+| Parameter / Metric | Resistive Load Differential Pair | Active Current-Mirror Differential Pair | Architectural Impact / Advantage |
+| :--- | :---: | :---: | :--- |
+| **Supply Voltage ($V_{DD}$)** | $5.0\text{ V}$ | $1.8\text{ V}$ | Low-voltage CMOS compatible |
+| **Load Implementation** | Passive $R_1, R_2 = 10\text{ k}\Omega$ | PMOS Active Mirror ($M_1, M_2$) | Minimal silicon area footprint |
+| **Tail Bias Implementation** | Ideal Current Source ($100\ \mu\text{A}$) | Transistor Current Source ($M_5$) | Realistic integrated biasing |
+| **Differential Gain ($A_d$)** | **$20.40\text{ dB}$ ($10.5\text{ V/V}$)** | **$54.19\text{ dB}$ ($512.3\text{ V/V}$)** | **$+33.79\text{ dB}$** |
+| **$-3\text{dB}$ Bandwidth ($f_{-3\text{dB}}$)** | High (Low output impedance) | **$3.48\text{ MHz}$** ($C_L = 0.1\text{ pF}$) | Dominant pole at high-impedance $V_{out}$ |
+| **Gain-Bandwidth Product** | $\approx 25\text{ MHz}$ | **$178.44\text{ MHz}$** | Significantly higher GBW |
+| **Output Format** | Differential | Single-Ended ($V_{out}$) | Automatic Diff-to-Single Conversion |
 ## 6. How to run these simulations
 Follow these steps to replicate the simulation results in LTspice:
 1. Download and install LTspice.
