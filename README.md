@@ -43,7 +43,7 @@ While the passive resistive-load differential pair offers good linearity, it suf
 
 1. **Integrated Area:** High-value resistors consume massive physical silicon area on-chip compared to compact MOSFETs.
 2. **Strict Gain vs. Headroom Trade-Off:** To increase differential gain ($A_d = g_m R_D$), $R_D$ must be increased. However, large $R_D$ causes a large DC drop ($I_D R_D$), pulling $V_{DS}$ down and driving the input transistors out of saturation.
-3. **Differential-to-Single-Ended Loss:** Taking a single-ended output from one node of a resistively loaded differential pair wastes $50\%$ ($6\text{ dB}$) of the available differential gain.
+3. **Differential-to-Single-Ended Loss:** With a resistively loaded differential pair, taking the output from only one side gives approximately half the differential output signal for a given differential input. The current-mirror load combines the two branch-current variations at a single output node.
 
 **The Active Current-Mirror Solution:**
 Replacing passive resistors with an active PMOS current mirror ($M_1, M_2$) addresses these three limitations:
