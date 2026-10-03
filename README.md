@@ -22,7 +22,6 @@ $$A_d = -g_m \cdot R_D$$
 Given $\mu_n C_{ox} = 200\ \mu\text{A/V}^2$, $W/L = 10$, and $I_D = 50\ \mu\text{A}$:
 * $g_{m1,2} = \sqrt{2 \mu_n C_{ox} (W/L) I_D} = \sqrt{2 \cdot 200\mu \cdot 10 \cdot 50\mu} = 0.447\text{ mS}$
 * **Calculated Differential Gain:** $A_d = -0.447\text{ mS} \times 10\text{ k}\Omega \approx \mathbf{-4.47\text{ V/V}}\ \mathbf{(13.0\text{ dB})}$
-* *(Note: With $W/L = 10\mu / 0.18\mu$, $g_m \approx 1.05\text{ mS} \implies A_d \approx \mathbf{10.5\text{ V/V}}\ \mathbf{(20.4\text{ dB})}$)*
 
 ### C. Simulation Results & Large-Signal Behavior
 1. **DC Operating Point (`.op`):**
