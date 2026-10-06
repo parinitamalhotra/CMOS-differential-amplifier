@@ -81,7 +81,7 @@ $M_1$ is diode-connected, so its current establishes a $V_{SG1}$. $M_2$ receives
 1. **Differential Voltage Gain ($A_d$):**
    * $A_d = g_{m3,4} \cdot (r_{o2} \parallel r_{o4})$
    
-   * $g_{m3,4} = \sqrt{2 \mu_n C_{ox} (W/L)_{3,4} I_{D3}} \approx 1.11\text{ mS}$
+   * \(g_{m3,4} = \sqrt{2\mu_n C_{ox}\left(\frac{W}{L}\right)_{3,4}I_D} \approx 1.11\,\text{mS}\)
      
    * $r_{o2} = r_{o4} = \frac{1}{\lambda I_D} = \frac{1}{0.02 \times 55.67\mu\text{A}} \approx 898\text{ k}\Omega \implies R_{out} \approx 449\text{ k}\Omega$
    * **Theoretical Gain:** $A_d \approx 1.11\text{ mS} \times 449\text{ k}\Omega = \mathbf{498\text{ V/V}}\ \mathbf{(53.9\text{ dB})}$
